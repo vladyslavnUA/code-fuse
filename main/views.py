@@ -16,6 +16,9 @@ from .forms import ProjectForm
 def home(request):
     return render(request, 'main/home.html')
 
+def random(request):
+    return render(request, 'main/signup.html')
+    
 class ProjectList(ListView):
     model = Project
     template_name = 'main/results.html'
