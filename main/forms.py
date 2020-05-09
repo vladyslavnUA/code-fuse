@@ -3,7 +3,7 @@ from .models import Project
 
 
 class ProjectForm(forms.ModelForm):
-    '''A form to handle creating and updating Codes.'''
+    '''A form to handle creating and updating projects.'''
     class Meta:
         model = Project
         exclude = [
