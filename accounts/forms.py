@@ -28,7 +28,7 @@ class SignUpForm(UserCreationForm):
 
 
 class StatusForm(forms.ModelForm):
-    '''A form for users confirming status as an officer.'''
+    '''A form for users confirming status as a developer.'''
     class Meta:
         model = Developer
-        fields = ['developer?']
+        fields = ['developer']
