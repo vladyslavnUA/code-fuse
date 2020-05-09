@@ -1,20 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from accounts.forms import SignUpForm, StatusForm
-from .models import ArchitectOrOfficer
 from django.urls import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
-from .models import ArchitectOrOfficer
+from .models import Developer
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.detail import (DetailView)
 from django.views.generic.edit import (
     CreateView,
-    UpdateView
-    UserProfile
+    UpdateView,
+    # UserProfile,
 )
-
+import emoji
 
 class SignUpView(SuccessMessageMixin, CreateView):
     '''Allows site visitors to set up a new account as architect or officer.'''
@@ -53,7 +52,7 @@ class UserProfile(UserPassesTestMixin, DetailView):
            render: HttpResponse
          """
         user = self.get_queryset().get(id=pk)
-        status = User.objects.get(user=user)
+        status = Developer.objects.get(user=user)
         context = {
             'user': user,
             'status': status
@@ -68,13 +67,13 @@ class UserProfile(UserPassesTestMixin, DetailView):
 
 
 class ProfileUpdate(UserPassesTestMixin, UpdateView):
-    model = User
+    model = Developer
     form_class = StatusForm
     template_name = 'accounts/profile/update.html'
 
     def get_queryset(self):
         '''Returns a queryset of all User objects.'''
-        return User.objects.all()
+        return Developer.objects.all()
 
     def get(self, request, pk):
         """Renders a page for user to check off if they're an architect or
