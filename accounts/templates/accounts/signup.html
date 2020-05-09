@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+    {% block content %}
+    &nbsp;&nbsp;
+  <!-- body for the signup page form -->
+
+  
+  <div class="container">
+      <h3>Sign Up for Codefuse!</h3>
+      <hr>
+      <div class="row mb-10">
+          <div class="col">
+              <!-- Form to sign up for a new account -->
+              <!-- <form method="post" class="mx-auto">
+                  {% csrf_token %}
+                    {% for field in form %}
+                      {% for error in field.errors %}
+                          <p class="text-danger">{{ error }}</p>
+                      {% endfor %}
+                      <div class="form-group row">
+                          <div class="col-8">
+                            <label for="id_{{ field.name }}">{{ field.label|title }}:</label>
+                            <p class="form">{{ field.help_text }}</p>
+                            <input class="form-control" type="{% if 'password' in field.name %}password{% else %}text{% endif %}" name="{{ field.name }}" id="id_{{ field.name }}" required>
+                          </div>
+                      </div>
+                    {% endfor %} -->
+                    <form method="post" class="mx-auto text-center">
+                      <!-- email address field -->
+                      <div class="form-group row">
+                          <div class="col-8">
+                            <label for="id_email">email address:</label>
+                            <p class="form"></p>
+                            <input class="form-control" type="text" name="email" id="id_email" required>
+                          </div>
+                      </div>
+                      <!-- username field -->
+                      <div class="form-group row">
+                          <div class="col-8">
+                            <label for="id_username">Username:</label>
+                            <p class="form">Required. 150 characters or fewer. Letters and digits only. Rare cases permittable: @/./+/-/_ .</p>
+                            <input class="form-control" type="text" name="username" id="id_username" required>
+                          </div>
+                      </div>
+                     <!-- first name field -->
+                      <div class="form-group row">
+                          <div class="col-8">
+                            <label for="id_first_name">First Name:</label>
+                            <p class="form"></p>
+                            <input class="form-control" type="text" name="first_name" id="id_first_name" required>
+                          </div>
+                      </div>
+                      <!-- last name field  -->
+                      <div class="form-group row">
+                          <div class="col-8">
+                            <label for="id_last_name">Last Name:</label>
+                            <p class="form"></p>
+                            <input class="form-control" type="text" name="last_name" id="id_last_name" required>
+                          </div>
+                      </div>
+                      <!-- password field -->
+                      <div class="form-group row">
+                          <div class="col-8">
+                            <label for="id_password1">Password:</label>
+                            <p class="form"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></p>
+                            <input class="form-control" type="password" name="password1" id="id_password1" required>
+                          </div>
+                      </div>
+                      <!-- confirm password field -->
+                      <div class="form-group row">
+                          <div class="col-8">
+                            <label for="id_password2">Password Confirmation:</label>
+                            <p class="form">Enter the same password as before, for verification.</p>
+                            <input class="form-control" type="password" name="password2" id="id_password2" required>
+                          </div>
+                      </div>
+                      <!-- developer field -->
+                      <div class="form-group row">
+                          <div class="col-8">
+                            <label for="id_is_officer">Are You a Developer?</label>
+                            <p class="form">Please check off how you will be using CodeFuse.</p>
+                            <label>
+                                <input class="form-control" type="radio" name="developer" id="id_last_name" value="developer" required>Developer
+                            </label>
+                            <label>
+                                <input class="form-control" type="radio" name="developer" id="id_last_name" value="general" required>General Account
+                            </label>
+                          </div>
+                      </div>
+
+                  <button type="submit" class="btn btn-success">Create New Account</button>
+              </form>
+              <br>
+          </div>
+      </div>
+      <br>
+  </div>
+
+  <style>
+      .form-background {
+          text-align: center;
+      }
+  </style>
+
+  {% endblock %}
