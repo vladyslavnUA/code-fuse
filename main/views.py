@@ -78,7 +78,7 @@ class ProjectUpdate(UserPassesTestMixin, UpdateView):
 class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
     template_name = 'main/delete.html'
-    success_url = reverse_lazy('projects:reference')
+    success_url = reverse_lazy('projects:home')
     success_message = "project successfully archived"
     queryset = Project.objects.all()
 
