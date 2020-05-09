@@ -13,6 +13,7 @@ app_name = 'projects'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('/random', random, name='random'),
     path('projects/', ProjectList.as_view(), name='reference'),
     path('projects/add-project/', ProjectCreate.as_view(), name='add_project'),
     path('projects/<slug:slug>/edit/', ProjectUpdate.as_view(), name='edit_project'),
