@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <br>
+    <div class="container">
+        <h1>Enter a New Code</h1>
+        <h5>Please fill out the form below.</h5>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input class="btn btn-success" type="submit" value="Confirm">
+
+
+        </form>
+    </div>
+
+    {% endblock %}
