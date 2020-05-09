@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'corsheaders',
     # 'main',
+    'accounts',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
