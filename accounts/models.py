@@ -17,10 +17,11 @@ class Developer(models.Model):
 
     def __str__(self):
         '''Return the related User's username.'''
-        type = "Developer" if self.developer is True else "General"
-        return f"{self.user.username} the {type}"
+        # type = "Developer" if self.developer is True else "General"
+        return f"{self.user.username}'s Profile'"
 
     def get_absolute_url(self):
         '''Returns a fully qualified path for user profile.'''
-        path_components = {'pk': self.user.id}
-        return reverse('accounts:user-profile', kwargs=path_components)
+        path_components = {'pk': self.user.id} 
+        # path_components = {pk=pk}
+        return redirect('accounts:user-profile', kwargs=path_components)
