@@ -12,7 +12,7 @@ class Project(models.Model):
                                       "Computer Generated.")
     description = models.TextField(help_text="(Elevator Pitch)")
     programming_languages = models.CharField(max_length=200, blank=True)
-    frameworks = models.CharField(max_length=400) 
+    frameworks = models.CharField(max_length=400, blank=True) 
     date_posted = models.DateTimeField(auto_now_add=True, help_text=(
             "The date and time this page was created. " +
             "Automatically generated when the model saves.")
