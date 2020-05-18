@@ -3,23 +3,24 @@
 {% block content %}
 
 	<div class="container mt-5">
-		<h1>{{project.title}}</h1>
-
-		<!-- DO and DON'T's section -->
+		<h1>Project Title: {{project.title}}</h1>
+        <p>Posted by: {{project.posted_by}}</p>
+        
+        <br>
 		<div class="row mb-3">
 			<div class="col-sm-6">
 				<div class="card">
 					<div class="card-body">
-						<div class="card-title"><h3>DO's</h3></div>
-						<div class="card-text">{{code.can_dos}}</div>
+						<div class="card-title"><h4>Programming Languages Used</h4></div>
+						<div class="card-text">{{project.programming_languages}}</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="card">
 					<div class="card-body">
-						<div class="card-title"><h3>DON'T's</h3></div>
-						<div class="card-text">{{code.cannot_dos}}</div>
+						<div class="card-title"><h4>Frameworks Used</h4></div>
+						<div class="card-text">{{project.frameworks}}</div>
 					</div>
 				</div>
 			</div>
@@ -27,7 +28,10 @@
 
 		<!-- Description Section -->
 		<h3>Description</h3>
-			<p>{{project.description}}</p>
+            <p>{{project.description}}</p>
+        <br>
+        
+        <p class="right-text">Posted by: {{project.posted_by}}</p>
 		{% if user.is_authenticated %}
 			<div class="row ml-5">
 				<a class="btn btn-primary mr-5" href="{% url 'projects:edit_project' project.slug %}">Update This Project</a>
