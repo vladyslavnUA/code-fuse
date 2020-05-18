@@ -16,9 +16,9 @@ from .forms import ProjectForm
 def home(request):
     return render(request, 'main/home.html')
 
-def random(request):
-    return render(request, 'main/signup.html')
-    
+# def random(request):
+#     return render(request, 'main/signup.html')
+
 class ProjectList(ListView):
     model = Project
     template_name = 'main/results.html'
@@ -86,13 +86,13 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
     queryset = Project.objects.all()
 
     def test_func(self):
-        code = self.get_object()
+        project = self.get_object()
         user = self.request.user
         return (user.is_authenticated is True)
 
     def get(self, request, slug):
         '''displaying'''
-        code = self.get_queryset().get(slug=slug)
+        project = self.get_queryset().get(slug=slug)
 
         context = {
             'project': project
