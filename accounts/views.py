@@ -4,14 +4,13 @@ from accounts.forms import SignUpForm, StatusForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
-from .models import Developer
+from accounts.models import Developer
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.detail import (DetailView)
 from django.views.generic.edit import (
     CreateView,
-    UpdateView,
-    # UserProfile,
+    UpdateView
 )
 import emoji
 
@@ -28,12 +27,45 @@ class SignUpView(SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         '''Save the new User, and set up their profile as well.'''
         self.object = form.save()
-        user = User.objects.create(
+        developer = Developer.objects.create(
             user=self.object,
-            developer_account=False)
+            developer=False)
         developer.save()
         return super().form_valid(form)
 
+
+# class UserProfile(UserPassesTestMixin, DetailView):
+    # model = User
+    # template_name = 'accounts/profile/show_profile.html'
+    # # queryset = User.objects.all()
+
+    # def get_queryset(self):
+    #     '''Returns a queryset of all User objects.'''
+    #     return self.model.objects.all()
+
+    # def get(self, request, pk):
+    #     """Renders a page to show an account of user.
+    #        Parameters:
+    #        pk(int): specific id of the User in db.
+    #        request(HttpRequest): the HTTP request sent to the server
+    #        Returns:
+    #        render: HttpResponse
+    #      """
+    #     user = self.get_queryset().get(id=pk)
+    #     # developer = user.developer
+    #     status = Developer.objects.get(user=user)
+    #     context = {
+    #         # 'developer': developer,
+    #         'user': user,
+    #         'status': status,
+    #     }
+    #     return render(request, self.template_name, context)
+
+    # def test_func(self):
+    #     '''Ensures the user can see only their own profile.'''
+    #     requested_user = self.get_object()
+    #     user = self.request.user
+    #     return requested_user == user
 
 class UserProfile(UserPassesTestMixin, DetailView):
     model = User
@@ -65,7 +97,6 @@ class UserProfile(UserPassesTestMixin, DetailView):
         user = self.request.user
         return requested_user == user
 
-
 class ProfileUpdate(UserPassesTestMixin, UpdateView):
     model = Developer
     form_class = StatusForm
@@ -76,8 +107,8 @@ class ProfileUpdate(UserPassesTestMixin, UpdateView):
         return Developer.objects.all()
 
     def get(self, request, pk):
-        """Renders a page for user to check off if they're an architect or
-           compliance officer.
+        """Renders a page for user to check off if they're a developer or
+           general user.
            Parameters:
            pk(int): specific id of the User in db.
            request(HttpRequest): the HTTP request sent to the server
