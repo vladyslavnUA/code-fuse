@@ -19,3 +19,6 @@ urlpatterns = [
          name="update-profile"),
     path('profiles/<int:pk>/', UserProfile.as_view(), name="user-profile"),
 ]
+
+# FOR PASSWORD RESET: https://medium.com/@khansubhan95/password-reset-in-django-8b4d37924958
+# or https://learndjango.com/tutorials/django-password-reset-tutorial
