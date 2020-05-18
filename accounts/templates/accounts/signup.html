@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-    {% block content %}
+{% block content %}
     &nbsp;&nbsp;
   <!-- body for the signup page form -->
 
@@ -11,7 +11,7 @@
           <div class="col">
               <!-- Form to sign up for a new account -->
               <!-- <form method="post" class="mx-auto">
-                  {% csrf_token %}
+                  
                     {% for field in form %}
                       {% for error in field.errors %}
                           <p class="text-danger">{{ error }}</p>
@@ -25,14 +25,12 @@
                       </div>
                     {% endfor %} -->
                     <form method="post" class="mx-auto text-center">
-                      <!-- email address field -->
-                      <div class="form-group row">
-                          <div class="col-8">
-                            <label for="id_email">email address:</label>
-                            <p class="form"></p>
-                            <input class="form-control" type="text" name="email" id="id_email" required>
-                          </div>
-                      </div>
+                      {% csrf_token %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+
                       <!-- username field -->
                       <div class="form-group row">
                           <div class="col-8">
@@ -40,6 +38,14 @@
                             <p class="form">Required. 150 characters or fewer. Letters and digits only. Rare cases permittable: @/./+/-/_ .</p>
                             <input class="form-control" type="text" name="username" id="id_username" required>
                           </div>
+                      </div>
+                      <!-- email address field -->
+                      <div class="form-group row">
+                        <div class="col-8">
+                            <label for="id_email">Email Address:</label>
+                            <p class="form"></p>
+                            <input class="form-control" type="text" name="email" id="id_email" required>
+                        </div>
                       </div>
                      <!-- first name field -->
                       <div class="form-group row">
@@ -101,4 +107,4 @@
       }
   </style>
 
-  {% endblock %}
+{% endblock %}
