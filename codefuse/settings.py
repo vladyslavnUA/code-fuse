@@ -29,9 +29,9 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'oauth2_provider',
     'corsheaders',
-    # 'main',
+    'main',
     'accounts',
-    'main.apps.MainConfig',
+    # 'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
