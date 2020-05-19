@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import django_heroku
 import dj_database_url
 from django.urls import reverse
 load_dotenv()
@@ -135,3 +136,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static'),
 # ]
+
+django_heroku.settings(locals())
