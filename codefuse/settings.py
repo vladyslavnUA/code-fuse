@@ -29,17 +29,17 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'oauth2_provider',
-    'corsheaders',
-    'main',
-    'accounts',
-    # 'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oauth2_provider',
+    'corsheaders',
+    'main',
+    'accounts',
+    # 'main.apps.MainConfig',
 ]
 
 MIDDLEWARE = [
