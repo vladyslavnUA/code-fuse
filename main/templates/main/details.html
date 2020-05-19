@@ -31,7 +31,7 @@
             <p>{{project.description}}</p>
         <br>
         
-        <p class="right-text">Posted by: {{project.posted_by}}</p>
+        <!-- <p class="right-text">Posted by: {{project.posted_by}}</p> -->
 		{% if user.is_authenticated %}
 			<div class="row ml-5">
 				<a class="btn btn-primary mr-5" href="{% url 'projects:edit_project' project.slug %}">Update This Project</a>
