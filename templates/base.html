@@ -30,13 +30,23 @@
               <!-- user sees button to login if anonymous -->
               {% if not user.is_authenticated %}
                   <!-- login -->
+                  <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:login' %}">Login</a>
+                    </li>
               <!-- user sees button to logout, or see profile if they are logged in -->
               {% else %}
-                  <!-- logout -->
-                        <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'projects:add_project' %}">Add Project</a>
-                        </li>
+                  <!-- new project -->
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'projects:add_project' %}">New Project</a>
+                    </li>
                   <!-- profile -->
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:user-profile' user.id %}">Profile</a>
+                    </li>
+                  <!-- logout -->
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:logout' %}">Logout</a>
+                    </li>
               {% endif %}
             </ul>
           </div>
