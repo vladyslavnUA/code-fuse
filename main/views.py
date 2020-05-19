@@ -73,10 +73,10 @@ class ProjectUpdate(UserPassesTestMixin, UpdateView):
     queryset = Project.objects.all()
 
     def test_func(self):
-        '''Ensures the user adding the Code is an officer.'''
-        code = self.get_object()
+        '''Ensures the user adding the Project is the user.'''
+        project = self.get_object()
         user = self.request.user
-        return (user.is_authenticated is True)
+        return (user.is_authenticated is True and user == project.posted_by)
 
 class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
@@ -88,7 +88,7 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
     def test_func(self):
         project = self.get_object()
         user = self.request.user
-        return (user.is_authenticated is True)
+        return (user.is_authenticated is True and user == project.posted_by)
 
     def get(self, request, slug):
         '''displaying'''
