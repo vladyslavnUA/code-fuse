@@ -1,52 +1,72 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>CodeFuse</title>
+    <title>Codefuse</title>
+    <link rel='icon' href="https://www.favicon.cc/logo3d/52197.png" type='image/x-icon'/>
+    <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/signup.css' %}" rel="stylesheet">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark text-uppercase fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg bg-dark text-uppercase" id="mainNav">
         <div class="container">
-          <a class="navbar-brand js-scroll-trigger" href="#page-top">Codefuse</a>
-          <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-          </button> -->
+          <a class="navbar-brand js-scroll-trigger" href="/">Codefuse</a>
+          
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about"><img src="https://img.icons8.com/plasticine/2x/about.png" class="navimg"/></a>
               </li>
+              
+              <p class="break"></p>
+              <style>
+              .break {
+                  margin-bottom: 4%;
+              }
+              </style>
               <!-- user sees button to login if anonymous -->
               {% if not user.is_authenticated %}
                   <!-- login -->
                   <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:login' %}">Login</a>
-                  </li>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:login' %}" title="Login"><img src="https://i.ya-webdesign.com/images/login-button-png-2.png" class="navimg"/></a>
+                    </li>
               <!-- user sees button to logout, or see profile if they are logged in -->
               {% else %}
-                  <!-- logout -->
+                  <!-- all projects -->
                   <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:logout' %}">Logout</a>
-                  </li>
-                        <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'projects:add_project' %}">New Project</a>
-                        </li>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'projects:reference' %}" title="View Projects"><img src="https://cdn2.iconfinder.com/data/icons/graphic-design-outline-4/64/Layers-512.png" class="navimg"/></a>
+                    </li>
+                  <!-- new project -->
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'projects:add_project' %}" title="Add Project"><img src="https://lh3.googleusercontent.com/proxy/VxkDwMER2tG5MHCNfglK6XWKPI3crjA8N_np1Lw0c7Xbn9jy2C5a_3n6r_3q6Cq-XvdmnwyY3SknyjZU_zMsH9fCUIrIXZfp_SoVkASC0Nnm8QciZRCbqQF9C8LgQjE" class="navimg"/></a>
+                    </li>
                   <!-- profile -->
-                  <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:user-profile' user.id %}">Profile</a>
-                  </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:user-profile' user.id %}" title="Profile"><img src="https://p7.hiclipart.com/preview/442/477/305/computer-icons-user-profile-avatar-profile.jpg" class="navimg"/></a>
+                    </li>
+                  <!-- logout -->
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'accounts:logout' %}" title="Logout"><img src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/logout-icon-14-256.png" class="navimg"/></a>
+                    </li>
               {% endif %}
             </ul>
           </div>
         </div>
       </nav>
-    
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+      <style>
+        .navimg {
+            height: 35px;
+            width: 35px;
+        }
+      </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
 </html>
