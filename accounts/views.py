@@ -128,3 +128,8 @@ class ProfileUpdate(UserPassesTestMixin, UpdateView):
         requested_user = self.get_object().user
         user = self.request.user
         return requested_user == user
+
+# def logout_request(request):
+#     logout(request)
+#     messages.info(request, "Logged out successfully!")
+#     return redirect("main:homepage")
