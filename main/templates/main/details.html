@@ -32,7 +32,7 @@
         <br>
         
         <!-- <p class="right-text">Posted by: {{project.posted_by}}</p> -->
-		{% if user.is_authenticated %}
+        {% if user.is_authenticated %}
 			<div class="row ml-5">
 				<a class="btn btn-primary mr-5" href="{% url 'projects:edit_project' project.slug %}">Update This Project</a>
 				<a class="btn btn-warning" href="{% url 'projects:remove_project' project.slug %}">Delete This Project</a>
