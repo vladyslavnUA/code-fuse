@@ -14,7 +14,10 @@ from django.views.generic.edit import (
 )
 import emoji
 
-class SignUpView(SuccessMessageMixin, CreateView):
+# def login(request):
+#   return render(request, 'accounts/login.html')
+
+class SignUpView(CreateView):
     '''Allows site visitors to set up a new account as architect or officer.'''
     form_class = SignUpForm
     success_url = reverse_lazy('accounts:login')
@@ -67,7 +70,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
     #     user = self.request.user
     #     return requested_user == user
 
-class UserProfile(UserPassesTestMixin, DetailView):
+class UserProfile(DetailView):
     model = User
     template_name = 'accounts/profile/show_profile.html'
 
@@ -97,7 +100,7 @@ class UserProfile(UserPassesTestMixin, DetailView):
         user = self.request.user
         return requested_user == user
 
-class ProfileUpdate(UserPassesTestMixin, UpdateView):
+class ProfileUpdate(UpdateView):
     model = Developer
     form_class = StatusForm
     template_name = 'accounts/profile/update.html'
