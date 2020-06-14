@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-body">
+        <a href="{% url 'projects:details' project.slug %}"><h5 class="card-title">{{ project.title }}</h5></a>
+        <p class="card-text">{{ project.description|truncatewords_html:30 }}</p>
+        <p class="right">by: {{ project.posted_by }}</p>
+        <a href="{% url 'projects:details' project.slug %}" class="btn btn-secondary">More Details</a>
+    </div>
+</div>
+
+<style>
+.right {
+    float: right;
+}
+</style>

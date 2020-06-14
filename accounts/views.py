@@ -84,7 +84,7 @@ class UserProfile(UserPassesTestMixin, DetailView):
            render: HttpResponse
          """
         user = self.get_queryset().get(id=pk)
-        status = Developer.objects.get(user=user)
+        status = user.objects.get(user=user)
         context = {
             'user': user,
             'status': status
